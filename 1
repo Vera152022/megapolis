@@ -1,0 +1,20 @@
+f = open('monster_game.csv', encoding="UTF-8").readlines()
+del f[0]
+maxx = 0
+f2 = open('monster_opportunity.csv', 'w', encoding="UTF-8")
+f2.write('opportunity,power' + '\n')
+for i in f:
+    pok = i.strip().split(',')
+    moh_reg = int(pok[5]) * (int(pok[2]) / 100)
+    moh_dop = (int(pok[3]) + int(pok[4]) + int(pok[5]) + int(pok[6])) * (int(pok[2]) / 100)
+    moh_usil = int(pok[3]) * (int(pok[2]) / 100)
+    if pok[1] == 'регенерация':
+        if moh_reg > maxx:
+            maxx = moh_reg
+        f2.write(f'регенерация,{moh_reg}' + '\n')
+    if pok[1] == 'усиление атаки':
+        f2.write(f'усиление атаки,{moh_usil}' + '\n')
+    if pok[1] == 'дополнительный ход':
+        f2.write(f'дополнительный ход,{moh_dop}' + '\n')
+f2.close()
+print(f'Регенерация: {maxx}')
