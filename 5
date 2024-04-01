@@ -1,0 +1,8 @@
+f = open('monster_game.csv', encoding="UTF-8").readlines()
+del f[0]
+ans = []
+for i in f:
+    pok = i.strip().split(',')
+    ans.append(f'{pok[1]}{pok[2]}{pok[3]} - {pok[2]}')
+for j in range(10):
+    print(ans[j])
