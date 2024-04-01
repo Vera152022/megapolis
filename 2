@@ -1,0 +1,20 @@
+f = open('monster_game.csv', encoding="UTF-8").readlines()
+flag = 0
+del f[0]
+total = open('monster_game_sort.csv', 'w', encoding="UTF-8")
+total.write('MonsterName,opportunity,probability,attack,protection,health,speed' + '\n')
+for i in f:
+    pok = i.strip().split(',')
+    if pok[1] == 'усиление атаки' and flag != 3:
+        flag += 1
+        print(f'{pok[0]} имеет возможность: {pok[1]}, вероятность использования возможности равна {pok[2]}')
+    if pok[1] == 'усиление атаки':
+        total.write(f'{pok[0]},{pok[1]},{pok[2]},{pok[3]},{pok[4]},{pok[5]},{pok[6]}' + '\n')
+for i in f:
+    pok = i.strip().split(',')
+    if pok[1] == 'регенерация':
+        total.write(f'{pok[0]},{pok[1]},{pok[2]},{pok[3]},{pok[4]},{pok[5]},{pok[6]}' + '\n')
+for i in f:
+    pok = i.strip().split(',')
+    if pok[1] == 'дополнительный ход':
+        total.write(f'{pok[0]},{pok[1]},{pok[2]},{pok[3]},{pok[4]},{pok[5]},{pok[6]}' + '\n')
