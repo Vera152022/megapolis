@@ -1,0 +1,15 @@
+f = open('monster_game.csv', encoding="UTF-8").readlines()
+del f[0]
+vvod = input()
+
+while vvod != "хватит":
+    summ = 0
+    for i in f:
+        pok = i.strip().split(',')
+        if int(vvod) > int(pok[5]) and int(pok[5]) != 0:
+            summ += 1
+    if summ == 0:
+        print('Вы очень слабы. Сходите и наберитесь опыта!')
+    else:
+        print(f'Вы сможете победить: {summ}')
+    vvod = input()
