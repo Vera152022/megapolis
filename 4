@@ -1,0 +1,15 @@
+f = open('monster_game.csv', encoding="UTF-8").readlines()
+del f[0]
+monstr = {}
+monstr_sil = {}
+for i in f:
+    pok = i.strip().split(',')
+    name = pok[0].split(' ')
+    if name[1] not in monstr:
+        monstr[name[1]] = 1
+        monstr_sil[name[1]] = int(pok[3])
+    else:
+        monstr[name[1]] += 1
+        monstr_sil[name[1]] += int(pok[3])
+for j in monstr:
+    print(f'{monstr[j]} монстров класса {j.capitalize()}, средняя сила атаки {monstr_sil[j] / monstr[j]}')
